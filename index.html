@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#101820">
-<title>Happy Father's  — Một bầu trời dành cho bố</title>
+<title>Happy Father's Day  — Một bầu trời dành cho bố</title>
 <style>
 :root{
   --night:#101820; --night2:#18232b; --ink:#eee8dc; --muted:#a9a99f;
@@ -110,7 +110,7 @@ button.action:hover{background:#c5a16a18;border-color:var(--gold2);transform:tra
     </svg>
     <button class="star-button s1" data-note="Cảm ơn bố vì luôn là điểm tựa bình yên của con." aria-label="Ngôi sao thứ nhất">✦</button>
     <button class="star-button s2" data-note="Con mong bố luôn khỏe mạnh, an yên và có thật nhiều niềm vui." aria-label="Ngôi sao thứ hai">✧</button>
-    <button class="star-button s3" data-note="Con hy vọng sau này có thể trở thành niềm tự hào của ." aria-label="Ngôi sao thứ ba">✦</button>
+    <button class="star-button s3" data-note="Con hy vọng sau này có thể trở thành niềm tự hào của bố ." aria-label="Ngôi sao thứ ba">✦</button>
     <button class="star-button s4" data-note="Con yêu bố, kể cả trong những ngày con chưa kịp nói ra." aria-label="Ngôi sao thứ tư">✧</button>
   </div>
   <div class="star-note" id="starNote" aria-live="polite">Mỗi ngôi sao là một điều con muốn gửi bố.</div>
@@ -132,6 +132,16 @@ button.action:hover{background:#c5a16a18;border-color:var(--gold2);transform:tra
     <div class="record-wrap">
       <div class="record" id="record" role="button" tabindex="0" aria-label="Chạm để nghe lời nhắn"></div>
     </div>
+    <div id="sunoPlayer" style="display:none; margin:20px auto; max-width:500px;">
+  <iframe
+    src="https://suno.com/embed/8d030c87-2da0-4fc8-9044-fc0cf4ccbe94"
+    width="100%"
+    height="152"
+    frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media"
+    title="Bài hát dành tặng bố">
+  </iframe>
+</div>
     <div class="memory-message" id="memoryMessage">
       Với thế giới, bố có thể chỉ là một người bình thường. Nhưng với con, bố luôn là một phần rất đặc biệt của thế giới ấy.
       <small>One thing I hope you never forget</small>
@@ -169,7 +179,14 @@ document.getElementById('openLetter').addEventListener('click',()=>{
   if(letter.classList.contains('show'))letter.scrollIntoView({behavior:'smooth',block:'center'});
 });
 const record=document.getElementById('record'),message=document.getElementById('memoryMessage');
-function revealMessage(){message.classList.toggle('show');if(message.classList.contains('show'))message.scrollIntoView({behavior:'smooth',block:'center'});}
+function revealMessage(){
+  message.classList.toggle('show');
+  const player = document.getElementById('sunoPlayer');
+  player.style.display = player.style.display === 'none' ? 'block' : 'none';
+  if(message.classList.contains('show')){
+    message.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+}
 record.addEventListener('click',revealMessage);
 record.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();revealMessage();}});
 </script>
